@@ -16,7 +16,7 @@ public class PasswordService {
         hasMinLength(request,errors);
         hasUpperCase(request, errors);
         //hasLowerCase(String password);
-        //hasDigit(String password);
+        hasDigit(request, errors);
         hasSpecialChar(request ,errors);
         PasswordResponse response = new PasswordResponse(errors,request.password());
 
@@ -39,7 +39,13 @@ public void hasSpecialChar(PasswordRequest request, List<String>errors){
         if(!request.password().matches(".*[!@#$%¨&*_=+;].*")){
             errors.add("Senha sem caracteres especiais");
         }
-}
+    }
+
+    public void hasDigit(PasswordRequest request, List<String>errors){
+        if(!request.password().matches(".*[0-9].*")){
+            errors.add("Senha sem números");
+        }
+    }
 
 
 

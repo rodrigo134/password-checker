@@ -5,7 +5,6 @@ import com.rodrigo134.password_checker.dto.PasswordRequest;
 import com.rodrigo134.password_checker.dto.PasswordResponse;
 import com.rodrigo134.password_checker.service.PasswordService;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
