@@ -15,7 +15,7 @@ public class PasswordService {
         List<String> errors = new ArrayList<>();
         hasMinLength(request,errors);
         hasUpperCase(request, errors);
-        //hasLowerCase(String password);
+        hasLowerCase(request, errors);
         hasDigit(request, errors);
         hasSpecialChar(request ,errors);
         PasswordResponse response = new PasswordResponse(errors,request.password());
@@ -34,9 +34,14 @@ public class PasswordService {
             errors.add("Senha sem letras maiúsculas");
         }
     }
+    public void hasLowerCase(PasswordRequest request, List<String> errors){
+        if(!request.password().matches(".*[a-z].*")){
+            errors.add("Senha sem letras minúsculas");
+        }
+    }
 
-public void hasSpecialChar(PasswordRequest request, List<String>errors){
-        if(!request.password().matches(".*[!@#$%¨&*_=+;].*")){
+    public void hasSpecialChar(PasswordRequest request, List<String>errors){
+        if(!request.password().matches(".*[!@#$%^&*()_+\\-={}\\[\\]:;\"'<>?,./`~\\\\|].*")){
             errors.add("Senha sem caracteres especiais");
         }
     }
@@ -46,9 +51,6 @@ public void hasSpecialChar(PasswordRequest request, List<String>errors){
             errors.add("Senha sem números");
         }
     }
-
-
-
 
 
 
